@@ -1,45 +1,42 @@
 <template>
-    <div class="page row">
-        <div class="col-md-10">
+    <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+        <div class="container px-32 mb-6">
             <InputSearch v-model="searchText" />
         </div>
-        <div class="mt-3 col-md-6">
-            <h4>
-                Dessert Recipe
-            </h4>
-            <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
-                <DessertList v-if="filteredDessertsCount > 0" :desserts="filteredDesserts"
-                    v-model:activeIndex="activeIndex" />
-                <p v-else>Không có món tráng miệng nào.</p>
-            </div>
-            <div class="text-center my-4">
-                <div class="bg-green-700 px-4 py-2 text-center text-white border rounded shadow-sm">
-                    <button class="btn btn-sm btn-primary" @click="refreshList()">
-                        <i class="fas fa-redo"></i> Làm mới
-                    </button>
-                    <hr>
-                    <button class="btn btn-sm btn-success" @click="goToAddDessert">
-                        <i class="fas fa-plus"></i> Thêm mới
-                    </button>
+        <DessertList v-if="filteredDessertsCount > 0" :desserts="filteredDesserts"
+            v-model:activeIndex="activeIndex" />
+        <p v-else>Không có món tráng miệng nào.</p>
+        <div class="text-center my-4">
+            <button class="btn btn-sm btn-primary px-4 py-2 text-center text-white border rounded shadow-sm"
+                @click="refreshList()">
+                <i class="fas fa-redo"></i> Làm mới
+            </button>                    
+            <button class="btn btn-sm btn-success px-4 py-2 text-center text-white border rounded shadow-sm"
+                 @click="goToAddDessert">
+                <i class="fas fa-plus"></i> Thêm mới
+            </button>
+        </div>
+        <div class="container px-8 mb-4">
+            <div v-if="activeDessert">
+                <div class="grid md:grid-cols-6 grid-cols-1">
+                    <div class="md-col-start-2 md:col-span-4 shadow-lg">
+                        <div class="grid md:grid-cols-2 grid-cols-1">
+                            <DessertCard :dessert="activeDessert" />
+                            <div class="p-4">
+                                <router-link :to="{
+                                    name: 'dessert.edit',
+                                    params: { id: activeDessert._id },
+                                }">
+                                    <span class="mt-2 badge bg-warning text-dark">
+                                        <i class="fas fa-edit"></i> Hiệu chỉnh
+                                    </span>
+                                </router-link>                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="mt-3 col-md-6">
-            <div v-if="activeDessert">
-                <h4>
-                    Chi tiết món tráng miệng
-                    <i class="fas fa-address-card"></i>
-                </h4>
-                <DessertCard :dessert="activeDessert" />
-                <router-link :to="{
-                    name: 'dessert.edit',
-                    params: { id: activeDessert._id },
-                }">
-                    <span class="mt-2 badge bg-warning text-dark">
-                        <i class="fas fa-edit"></i> Hiệu chỉnh</span>
-                </router-link>
-            </div>
-        </div> 
     </div>
 </template>
 <script>

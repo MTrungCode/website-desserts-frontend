@@ -10,10 +10,10 @@ export default {
                 _id: "",
                 name: "",
                 description: "",
-                favorite: null,
                 thumbar: "",
                 ingredients: "",
                 method: "",
+                favorite: null,
             },
             message: "",
         };
@@ -33,7 +33,7 @@ export default {
 
 <template>
     <div class="page">
-        <h4>Thêm món tráng miệng mới</h4>
+        <h4 class="font-semibold text-xl tracking-tight">Thêm món tráng miệng mới</h4>
         <DessertForm :dessert="dessert" @submit:dessert="dessertAdd" />
         <p>{{ message }}</p>
     </div>

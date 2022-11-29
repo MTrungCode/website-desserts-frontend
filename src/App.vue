@@ -10,11 +10,10 @@ export default {
 <template>
   <div id="app">
     <div class="flex flex-col h-screen">
-      <AppHeader />
-      <div class="container mt-3">
+      <AppHeader />      
+      <main class="flex-grow">
         <router-view />
-      </div>
-      <hr>
+      </main>
       <footer class="bg-gray-200 text-center lg:text-left">
         <div class="text-gray-700 text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
           2022 Copyright By Nguyễn Minh Trung

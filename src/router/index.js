@@ -19,7 +19,7 @@ const routes = [
         props: true
     },
     {
-        path: "/dessertsadd",
+        path: "/dessertAdd",
         name: "dessert.add",
         component: () => import("@/views/DessertAdd.vue"),
         props: true

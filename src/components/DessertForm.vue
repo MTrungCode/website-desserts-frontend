@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-    <Form @submit="submitDessert" :validation-schema="dessertFormSchema">
+    <Form :validation-schema="dessertFormSchema">
         <div class="form-group">
             <label for="name">Tên món tráng miệng</label>
             <Field name="name" type="text" class="form-control" v-model="dessertLocal.name" />
@@ -68,7 +68,7 @@ export default {
             <ErrorMessage name="method" class="error-feedback" />
         </div>
         <div class="form-group">
-            <label for="thumbar">Hinh ảnh</label>
+            <label for="thumbar">Link hình ảnh</label>
             <Field name="thumbar" type="text" class="form-control" v-model="dessertLocal.thumbar" />
             <ErrorMessage name="thumbar" class="error-feedback" />
         </div>
@@ -79,14 +79,13 @@ export default {
             </label>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary">Lưu</button>
-            <button v-if="dessertLocal._id" type="button" class="ml-2 btn btn-danger" @click="deleteContact">
+            <button class="btn btn-primary" @click="submitDessert">Lưu</button>
+            <button v-if="dessertLocal._id" class="ml-2 btn btn-danger" @click="deleteDessert">
                 Xóa
             </button>
         </div>
     </Form>
 </template>
-
 <style scoped>
 @import "@/assets/form.css";
 </style>

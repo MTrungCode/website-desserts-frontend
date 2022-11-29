@@ -56,7 +56,7 @@ export default {
 </script>
 <template>
     <div v-if="dessert" class="page">
-        <h4>Chỉnh sửa thông tin món ăn</h4>
+        <h4 class="font-semibold text-xl tracking-tight">Chỉnh sửa thông tin món ăn</h4>
         <DessertForm :dessert="dessert" @submit:dessert="updateDessert" @delete:dessert="deleteDessert" />
         <p>{{ message }}</p>
     </div>
